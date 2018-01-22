@@ -82,15 +82,17 @@ hr {
   background-image: url(resources/theme/images/man-461195_960_720.jpg);
 }
 .cssanimations .slideshow li:nth-child(2) {
-  background-image: url(resources/theme/images/23.01._Hiit-on-the-treadmill-1.jpg);
+background-image: url(resources/theme/images/man-461195_960_720.jpg);
+ /*  background-image: url(resources/theme/images/23.01._Hiit-on-the-treadmill-1.jpg); */
   animation-delay: 16.6666666667s;
 }
 .cssanimations .slideshow li:nth-child(3) {
-  background-image: url(resources/theme/images/Group-Fitness.jpg);
+	background-image: url(resources/theme/images/man-461195_960_720.jpg);
+ /*  background-image: url(resources/theme/images/Group-Fitness.jpg); */
   animation-delay: 33.3333333333s;
 }
 .no-cssanimations .slideshow li:nth-child(1) {
-  background-image: url(resources/theme/images/adult-1850925_960_720.jpg);
+  background-image: url(resources/theme/images/man-461195_960_720.jpg);
   opacity: 1;
 }
 

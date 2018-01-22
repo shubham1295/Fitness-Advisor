@@ -21,8 +21,25 @@
 	<title>Insert title here</title>
 </head>
 <body>
+<%-- 	<form:form modelAttribute="admin" method="post">
+			<table>
 		
-		<nav class="navbar navbar-inverse">
+				<tr>
+					<td>Email</td>
+					<td><form:input path="email"/></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td> <form:password path="password"/> </td>
+				</tr>
+				<tr>
+					<td></td>
+					<td> <input type="submit" value="Login"/>  </td>
+				</tr>
+			</table>
+		</form:form> --%>
+		
+	<nav class="navbar navbar-inverse">
 		  <div class="container">
 		    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
@@ -57,15 +74,16 @@
 		  <div class="user_options-container">
 		    <div class="user_options-text">
 		      <div class="user_options-unregistered">
-		        <h2 class="user_unregistered-title">Don't have an account?</h2>
-		        <a href="register"><button class="user_unregistered-signup" id="signup-button">Sign up</button></a>
+		        <h2 class="user_unregistered-title">This Is Admin LogIn Page</h2>
+		        <p class="user_registered-text">If u are Not a Admin Click here To Login/Signup</p>
+		        <a href="#"><button class="user_unregistered-signup" id="signup-button">Sign up</button></a>
 		      </div>
 		    
 		    <div class="user_options-forms" id="user_options-forms">
 		      <div class="user_forms-login">
 		        <h2 class="forms_title">Login</h2>
 		       
-		        <form:form modelAttribute="user" method="post" class="forms_form">
+		        <form:form modelAttribute="admin" method="post" class="forms_form">
 		          <fieldset class="forms_fieldset">
 		            <div class="forms_field">
 		              <form:input type="email" path="email" placeholder="Email" class="forms_field-input" required="required"/> 
@@ -84,6 +102,7 @@
 		    </div>
 		  </div>
 		</section>
+
 
 </body>
 </html>

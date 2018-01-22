@@ -5,7 +5,7 @@
 <!DOCTYPE html> 
 <html>
 	<head>
-		<link rel="stylesheet"  href="<c:url value="/resources/theme/css/bootstrap-theme.css"/>"/>
+		<%-- <link rel="stylesheet"  href="<c:url value="/resources/theme/css/bootstrap-theme.css"/>"/>
 		<link rel="stylesheet"  href="<c:url value="/resources/theme/css/bootstrap.css"/>"/>
 		<link rel="stylesheet"  href="<c:url value="/resources/theme/css/index.css"/>"/>
 		<link rel="stylesheet"  href="<c:url value="/resources/theme/css/signin.css"/>"/>
@@ -14,12 +14,12 @@
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
 		<script src='https://use.fontawesome.com/7ee55d0e5e.js'></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
-		      
+		   --%>    
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
 	</head>
 	<body>
-			
+<%-- 			
 	<nav class="navbar navbar-inverse">
 	  <div class="container">
 	    <!-- Brand and toggle get grouped for better mobile display -->
@@ -90,6 +90,36 @@
 	 </div>
 	</section>  
 	  
-	 
-	</body>
+ --%>	
+ 
+ 
+ 
+
+	<form:form modelAttribute="members" method="post">
+	<table>
+		
+		<tr>
+			<td>Name</td>
+			<td><form:input path="name"/> </td>
+		</tr>
+		
+		
+		<tr>
+			<td>Email</td>
+			<td><form:input path="email"/></td>
+		</tr>
+		
+		<tr>
+			<td>Password</td>
+			<td> <form:password path="password"/> </td>
+		</tr>
+		
+		<tr>
+			<td></td>
+			<td> <input type="submit" value="Register"/>  </td>
+		</tr>
+	</table>
+	</form:form>
+ 
+</body>
 </html>
