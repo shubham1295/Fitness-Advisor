@@ -7,35 +7,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
-	private Integer uid;
+public class Admin {
+	private Integer aid;
 	private String name;
-	private String password;
-	private String perm;
 	private String email;
+	private String password;
 	
-	public User() {
+	public Admin() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(Integer uid, String name, String password, String perm, String email) {
+	public Admin(String name, String password, String perm, String email) {
 		super();
-		this.uid = uid;
 		this.name = name;
 		this.password = password;
-		this.perm = perm;
 		this.email = email;
 	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="UID")
-	public Integer getUid() {
-		return uid;
+	@Column(name="AID")
+	public Integer getAid() {
+		return aid;
 	}
 
-	public void setUid(Integer uid) {
-		this.uid = uid;
+	public void setAid(Integer aid) {
+		this.aid = aid;
 	}
 
 	@Column(name="NAME")
@@ -54,15 +51,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	@Column(name="PERM")
-	public String getPerm() {
-		return perm;
-	}
-
-	public void setPerm(String perm) {
-		this.perm = perm;
 	}
 
 	@Column(name="EMAIL")

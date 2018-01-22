@@ -32,8 +32,8 @@ public class MemberController {
 	public String registerUser( User user, HttpSession session )
 	{	
 		String regStatus = service.InsertMember(user);
-		User usr1 = service.validate(user.getEmail(), user.getName());
-		System.out.println(usr1);
+		User usr = service.validate(user.getEmail(), user.getName());
+		System.out.println(usr);
 		if( regStatus.equals("ok"))
 			return "redirect:/member/login";
 		return "/user/Registration";
@@ -56,8 +56,7 @@ public class MemberController {
 		{
 			session.setAttribute("membSession", usr);
 			return "redirect:/member/details";
-		}
-		return "/user/Login";
+		}		return "/user/Login";
 	}
 	
 	//Diet

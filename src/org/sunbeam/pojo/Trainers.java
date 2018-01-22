@@ -7,24 +7,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
-	private Integer uid;
+public class Trainers {
+	private Integer tid;
 	private String name;
-	private String password;
-	private String perm;
+	private String gender;
 	private String email;
+	private Integer phone;
+	private Integer uid;
 	
-	public User() {
+	
+	public Trainers() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(Integer uid, String name, String password, String perm, String email) {
+	public Trainers(Integer tid, String name, String gender, String email, Integer phone, Integer uid) {
 		super();
-		this.uid = uid;
+		this.tid = tid;
 		this.name = name;
-		this.password = password;
-		this.perm = perm;
+		this.gender = gender;
 		this.email = email;
+		this.phone = phone;
+		this.uid = uid;
 	}
 
 	@Id
@@ -46,23 +49,32 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	@Column(name="PASSWORD")
-	public String getPassword() {
-		return password;
+	
+	@Column(name="TID")
+	public Integer getTid() {
+		return tid;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setTid(Integer tid) {
+		this.tid = tid;
 	}
 
-	@Column(name="PERM")
-	public String getPerm() {
-		return perm;
+	@Column(name="GENDER")
+	public String getGender() {
+		return gender;
 	}
 
-	public void setPerm(String perm) {
-		this.perm = perm;
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	@Column(name="PHONE")
+	public Integer getPhone() {
+		return phone;
+	}
+
+	public void setPhone(Integer phone) {
+		this.phone = phone;
 	}
 
 	@Column(name="EMAIL")
