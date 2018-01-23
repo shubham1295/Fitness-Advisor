@@ -95,7 +95,7 @@
  
  
 
-	<form:form modelAttribute="members" method="post">
+	<form:form modelAttribute="user" method="post">
 	<table>
 		
 		<tr>
@@ -113,7 +113,7 @@
 			<td>Password</td>
 			<td> <form:password path="password"/> </td>
 		</tr>
-		
+		<form:input path="perm" type="hidden" value="trainer"/>
 		<tr>
 			<td></td>
 			<td> <input type="submit" value="Register"/>  </td>
