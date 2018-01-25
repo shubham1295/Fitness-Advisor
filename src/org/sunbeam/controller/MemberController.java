@@ -55,7 +55,7 @@ public class MemberController {
 		if( usr != null )
 		{
 			session.setAttribute("membSession", usr);
-			if(usr.getPerm() == "member")
+			if(usr.getPerm().equals("member"))
 			{
 				return "redirect:/member/details";
 			}

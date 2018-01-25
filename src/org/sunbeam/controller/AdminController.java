@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.sunbeam.pojo.Admin;
+import org.sunbeam.pojo.Members;
 import org.sunbeam.pojo.Trainers;
 import org.sunbeam.pojo.User;
 import org.sunbeam.service.AdminService;
@@ -71,8 +72,28 @@ public class AdminController {
 	
 	//trainer
 	@GetMapping("/trainer")
-	public String showTrainer( Trainers trainer )
+	public String showTrainer( User user )
 	{
-		return "/user/AddTrainer";
+		return "/user/TrainerPage";
+	}
+	
+	//Trainer profile
+	
+	@GetMapping("/profile")
+	public String showProfileForm( Members member )
+	{		
+		return "/user/TrainerProfile";
+	}
+	
+	@PostMapping("/profile")	
+	public String submitProfile( Trainers trainer ,HttpSession session )
+	{	
+		System.out.println(trainer);
+		User u =(User)session.getAttribute("membSession");
+		System.out.println(u.getUid());
+		String regStatus = trainerService.UpdateProfile(trainer,u.getUid());
+		if( regStatus.equals("ok"))
+			return "redirect:/member/details";
+		return "/user/Profile";
 	}
 }
