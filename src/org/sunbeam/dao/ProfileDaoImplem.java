@@ -1,5 +1,7 @@
 package org.sunbeam.dao;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +30,14 @@ public class ProfileDaoImplem implements ProfileDao{
 		System.out.println(query);
 		Members memb = (Members) query.getSingleResult();		
 		return memb;
+	}
+
+	@Override
+	public Members GetMember(Integer uid) {
+		String hql = "select m from Members m where m.uid=:uid";
+		Query<Members> query = this.sessionFactory.getCurrentSession().createQuery(hql, Members.class);
+		query.setParameter("uid", uid );		
+		Members m = query.getSingleResult();		
+		return m;
 	}
 }

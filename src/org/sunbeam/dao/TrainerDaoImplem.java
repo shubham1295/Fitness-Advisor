@@ -20,7 +20,7 @@ public class TrainerDaoImplem implements TrainerDao{
 	@Override
 	public Trainers UpdateProfile(Trainers trainer, int uid) {
 		String hql = "update Trainers t set t.name=:name, t.gender=:gender, t.phone=:phone, t.email=:email where t.uid=:uid";
-		Query<?> query = this.sessionFactory.getCurrentSession().createQuery(hql);
+		Query<Trainers> query = this.sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("name", trainer.getName());
 		query.setParameter("gender", trainer.getGender());
 		query.setParameter("phone", trainer.getPhone());

@@ -4,4 +4,6 @@ import org.sunbeam.pojo.Members;
 
 public interface ProfileDao {
 	Members UpdateProfile ( Members member, int uid );
+	
+	Members GetMember (Integer uid);
 }

@@ -1,14 +1,24 @@
 package org.sunbeam.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.sunbeam.Tool.Tool;
+import org.sunbeam.pojo.DietPlan;
+import org.sunbeam.pojo.Health;
 import org.sunbeam.pojo.Members;
 import org.sunbeam.pojo.User;
+import org.sunbeam.service.DietService;
+import org.sunbeam.service.HealthService;
 import org.sunbeam.service.MemberService;
 import org.sunbeam.service.ProfileService;
 
@@ -21,6 +31,12 @@ public class MemberController {
 	
 	@Autowired
 	private ProfileService profileservice;
+	
+	@Autowired
+	private HealthService healthService;
+	
+	@Autowired
+	private DietService dietService;
 	
 	@GetMapping("/register")
 	public String showRegistrationForm( User user )
@@ -54,21 +70,14 @@ public class MemberController {
 		System.out.println(usr);	
 		if( usr != null )
 		{
+			Members mem = profileservice.GetMember(usr.getUid());
 			session.setAttribute("membSession", usr);
 			if(usr.getPerm().equals("member"))
 			{
-				return "redirect:/member/details";
+				return "redirect:/member/details/"+mem.getGender()+"/"+mem.getAge()+"/"+mem.getHeight()+"/"+mem.getWeight();
 			}
 			return "redirect:/admin/trainer";
 		}		return "/user/Login";
-	}
-	
-	//Diet
-	
-	@GetMapping("/details")
-	public String showDetails()
-	{
-		return "/user/Details";
 	}
 
 	//profile
@@ -97,5 +106,28 @@ public class MemberController {
 	public String showWorkout(  )
 	{		
 		return "/user/Workout";
+	}
+	
+	
+	//Diet
+	
+	@GetMapping("/details/{gender}/{age}/{height}/{weight}")
+	public String showDetails( @PathVariable String gender, @PathVariable Integer age, @PathVariable Integer height, @PathVariable Integer weight, ModelMap map )
+	{
+		String bmi = Tool.bmiCalc(height, weight);
+		Health h = new Health();
+		h.setGender(gender);
+		h.setAge(age);
+		h.setBmi(bmi);
+		List<Integer> dids = healthService.GetDpid(h);
+		if(!dids.isEmpty()){
+			List<DietPlan> dietplan = new ArrayList<>();
+			for(Integer id : dids){
+				dietplan.add(dietService.GetDpid(id));
+			}
+			map.addAttribute("dietplan", dietplan);
+			return "/user/Details";
+		}
+		return "redirect:/member/details";		
 	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="a" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html> 
 <html>
 	<head>
@@ -25,5 +26,18 @@
 		          <li><a href="profile">Profile</a></li>
 		        </ul>
 		    </div>
+		    
+		    <table border="1">
+		   <a:forEach var="diet" items="${dietplan}">
+		   	<tbody>
+		   		<tr> 
+			   		<td> <a:out value="${diet.name}"/> </td>
+			   		<td> <a:out value="${diet.url}"/> </td>
+			   		<td> <a:out value="${diet.description}"/> </td>
+			   		<td> <a:out value="${diet.timing}"/> </td>
+		   		</tr>
+		   	</tbody>
+		   </a:forEach>
+  		   	</table>
 	</body>
 </html>

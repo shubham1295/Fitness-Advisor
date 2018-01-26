@@ -18,4 +18,9 @@ public class ProfileServiceImplem implements ProfileService{
 		this.dao.UpdateProfile(member, uid);
 		return "ok";
 	}
+
+	@Override
+	public Members GetMember(Integer uid) {
+		return this.dao.GetMember(uid);
+	}
 }

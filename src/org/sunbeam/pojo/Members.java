@@ -14,7 +14,7 @@ public class Members {
 	private Integer height;
 	private Integer weight;
 	private Integer phone;
-	private Integer address;
+	private String address;
 	private String email;
 	private Integer uid;
 	private Integer age;
@@ -24,7 +24,7 @@ public class Members {
 	}
 
 	public Members(Integer mid, String name, String gender, Integer height, Integer weight, Integer phone,
-			Integer address, String email, Integer uid, Integer age) {
+			String address, String email, Integer uid, Integer age) {
 		super();
 		this.mid = mid;
 		this.name = name;
@@ -96,11 +96,11 @@ public class Members {
 	}
 
 	@Column(name="ADDRESS")
-	public Integer getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(Integer address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
